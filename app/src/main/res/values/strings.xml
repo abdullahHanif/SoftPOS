@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SoftPOS</string>
+    <string name="db_name">SoftPOS.db</string>
+    <string name="todo">TODO</string>
+    <string name="jobs">Jobs</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+
+</resources>

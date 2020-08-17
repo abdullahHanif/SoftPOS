@@ -1,0 +1,138 @@
+<layout>
+
+    <data>
+
+        <import type="com.abdullah.softpos.util.UtilKt" />
+
+        <variable
+            name="model"
+            type="com.abdullah.softpos.ui.home.model.Job" />
+
+        <variable
+            name="adapter"
+            type="com.abdullah.softpos.ui.home.adapters.JobsAdapter" />
+
+        <variable
+            name="viewmodel"
+            type="com.abdullah.softpos.ui.home.viewmodel.JobsViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+         android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/rootCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        card_view:cardCornerRadius="6dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp">
+
+            <View
+                android:id="@+id/deco"
+                android:layout_width="4dp"
+                android:layout_height="0dp"
+                android:background="@color/colorAccent"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_marginStart="4dp"
+                android:id="@+id/imgCompany"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintStart_toEndOf="@id/deco"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtJobTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLength="30"
+                android:text="@{model.customer_name}"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.04"
+                card_view:layout_constraintStart_toEndOf="@id/imgCompany"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtCompanyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_company"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLength="30"
+                android:text="@{model.job_street+` ,`+model.job_city+` ,`+model.job_postalcode}"
+                android:textSize="12sp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toEndOf="@id/imgCompany"
+                card_view:layout_constraintTop_toBottomOf="@id/txtJobTitle" />
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:text="@{(model.distance.length() > 3 ? model.distance.substring(0, 3) : model.distance)+` km away`}"
+                android:textSize="12sp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.04"
+                card_view:layout_constraintStart_toEndOf="@id/imgCompany"
+                card_view:layout_constraintTop_toBottomOf="@id/txtCompanyName" />
+
+            <TextView
+                android:id="@+id/txtPostDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:maxLength="30"
+                android:maxLines="2"
+                android:text="@{UtilKt.fromatDateFromServer(model.job_date)}"
+                android:textSize="12sp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toEndOf="@id/imgCompany"
+                card_view:layout_constraintTop_toBottomOf="@id/txtLocation"
+                card_view:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
